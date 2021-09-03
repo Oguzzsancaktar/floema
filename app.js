@@ -1,5 +1,8 @@
 require('dotenv').config()
+
 const express = require('express')
+const errorHandler = require('errorhandler')
+
 const app = express()
 const path = require('path')
 const port = 3000
@@ -27,6 +30,8 @@ const handleLinkResolver = (doc) => {
   return '/'
 }
 
+app.use(errorHandler())
+
 // Middleware to inject prismic context
 app.use((req, res, next) => {
   res.locals.ctx = {
@@ -46,17 +51,13 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/about', async (req, res) => {
-  initApi(req).then((api) => {
-    console.log('API => ', api)
-    api.query(Prismic.Predicates.any('document.type', ['about', 'metadata'])).then((response) => {
-      const { results } = response
-      const [about, meta] = results
+  const api = await initApi(req)
+  const about = await api.getSingle('about')
+  const meta = await api.getSingle('meta')
 
-      res.render('pages/about', {
-        about,
-        meta
-      })
-    })
+  res.render('pages/about', {
+    about,
+    meta
   })
 })
 
@@ -65,7 +66,19 @@ app.get('/collection', (req, res) => {
 })
 
 app.get('/detail/:uid', async (req, res) => {
-  res.render('pages/detail')
+  const api = await initApi(req)
+  const meta = await api.getSingle('meta')
+  const product = await api.getByUID('product', req.params.uid, {
+    fetchLinks: 'collection.title'
+  })
+
+  console.log(product)
+  console.log(product.data.highlights)
+
+  res.render('pages/detail', {
+    meta,
+    product
+  })
 })
 
 app.listen(port, () => {
