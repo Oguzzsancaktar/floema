@@ -7,6 +7,12 @@
   // object-fit: cover;
 }
 
+%center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @mixin ratio($height, $width) {
   font-size: 0;
   overflow: hidden;
