@@ -1,5 +1,26 @@
-$white-color : #fff;
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/vendors';
+@import './utils/responsive';
 
-.class {
-  color: $white-color;
-}
+@import './shared/descriptions';
+@import './shared/titles';
+
+@import "./base/fonts";
+@import "./base/reset";
+@import "./base/base";
+
+@import './components/preloader.scss';
+
+@import "./pages/about/about";
+@import "./pages/about/content";
+@import "./pages/about/gallery";
+@import "./pages/about/highlight";
+
+@import "./pages/collections/collections";
+@import "./pages/detail/detail";
+@import "./pages/home/home";
+
+
+
