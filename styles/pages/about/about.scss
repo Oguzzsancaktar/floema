@@ -1,14 +1,24 @@
+.about {
+  background: $color-cadet-blue;
+  color: $color-bright-gray;
+
+  margin: 20rem 0;
+  position: relative;
+
+  &:first-child {
+    margin-top: 0;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
 .about__wrapper {
 }
 
 .about__title {
-}
+  @extend %title-100;
 
-.about__gallery {
-}
-.about__gallery__wrapper {
-}
-.about__gallery__media {
-}
-.about__media__gallery__image {
+  max-width: 124rem;
+  margin: auto;
+  text-align: center;
 }

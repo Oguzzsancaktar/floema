@@ -1,13 +1,14 @@
 $color-black: #000;
-$color-white: #fff;
 
-$color-contessa:#c97164;
+$color-contessa: #c97164;
+$color-quicksand: #bc978c;
+$color-quarter-spanish-white: #f9f1e7;
+$color-cadet-blue: #b2bbc3;
+$color-bright-gray: #27284c;
 
-$font-george-x: 'George X';
+$font-george-x: "George X";
 $font-suisse-bp: "Suisse";
 
 $ease-out-expo: cubic-beizer(0.19, 1, 0.22, 1);
 
-$z-indexes:('navigation',
-  'content'
-)
+$z-indexes: ("preloader", "navigation", "content");

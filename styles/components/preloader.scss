@@ -3,13 +3,16 @@
   @extend %center;
 
   text-align: center;
-  background:$color-contessa;
-  color: $color-white;
-  display:none;
+  background: $color-contessa;
+  color: $color-quarter-spanish-white;
+  display: none;
+
+  z-index: z("preloader");
 }
 
 .preloader__text {
   @extend %title-53;
+
   max-width: 66rem;
 }
 
