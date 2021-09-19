@@ -100,7 +100,6 @@ app.get('/about', async (req, res) => {
 })
 
 app.get('/collections', async (req, res) => {
-  console.log('COMES FROM COLLECTIONS')
 
   const api = await initApi(req)
   const home = await api.getSingle('home')

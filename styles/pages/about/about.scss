@@ -2,15 +2,15 @@
   background: $color-cadet-blue;
   color: $color-bright-gray;
 
-  margin: 20rem 0;
-  position: relative;
+  // margin: 20rem 0;
+  // position: relative;
 
-  &:first-child {
-    margin-top: 0;
-  }
-  &:last-child {
-    margin-bottom: 0;
-  }
+  // &:first-child {
+  //   margin-top: 0;
+  // }
+  // &:last-child {
+  //   margin-bottom: 0;
+  // }
 }
 .about__wrapper {
 }
@@ -21,4 +21,8 @@
   max-width: 124rem;
   margin: auto;
   text-align: center;
+
+  @include media('<phone'){
+    max-width: 67.7rem;
+  }
 }
