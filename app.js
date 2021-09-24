@@ -65,6 +65,8 @@ const handleRequest = async api => {
   const meta = await api.getSingle('metadata')
   const navigation = await api.getSingle('navigation')
   const preloader = await api.getSingle('preloader')
+
+  console.log(navigation.data.list);
   return {
     meta,
     navigation,
@@ -76,6 +78,8 @@ app.get('/', async (req, res) => {
   const api = await initApi(req)
   const home = await api.getSingle('home')
   const defaults = await handleRequest(api)
+
+  // console.log(home.data)
 
   const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collection'), {
     fetchLinks: 'product.image'
@@ -93,6 +97,8 @@ app.get('/about', async (req, res) => {
   const about = await api.getSingle('about')
   const defaults = await handleRequest(api)
 
+console.log(1,defaults.navigation.data.list);
+
   res.render('pages/about', {
     ...defaults,
     about
@@ -105,9 +111,11 @@ app.get('/collections', async (req, res) => {
   const home = await api.getSingle('home')
   const defaults = await handleRequest(api)
 
+
   const { results: collections } = await api.query(Prismic.Predicates.at('document.type', 'collection'), {
     fetchLinks: 'product.image'
   })
+  console.log(collections);
 
   res.render('pages/collections', {
     ...defaults,
