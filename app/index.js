@@ -4,13 +4,20 @@ import Details from "./pages/Details";
 import Home from "./pages/Home";
 
 import each from "lodash/each";
+import  Preloader  from "components/preloader";
 
 class App {
   constructor() {
+    this.createPreloader()
     this.createContent();
     this.createPages();
 
     this.addLinkListeners();
+  }
+
+  createPreloader(){
+    this.preloader = new Preloader()
+    this.preloader.once('completed', this.onPreloaded)
   }
 
   createContent() {
@@ -30,6 +37,10 @@ class App {
     this.page = this.pages[this.template];
     this.page.create();
     this.page.show();
+  }
+
+  onPreloaded() {
+    console.log('Preloaded!');
   }
 
   async onChange(url) {
@@ -74,6 +85,8 @@ class App {
       };
     });
   }
+
+  
 }
 
 new App();
